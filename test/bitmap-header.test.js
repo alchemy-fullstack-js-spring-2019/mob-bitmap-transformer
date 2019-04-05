@@ -1,11 +1,17 @@
 const constants = require('../lib/bitmap-constants');
-const BitmapHeader = require('../lib/bitmap-header');
+const { BitmapHeader } = require('../lib/bitmap-header');
+const fs = require('fs');
 
 describe('bitmap header', () => {
 
   let buffer = null;
-  beforeEach(() => {
+  beforeEach((done) => {
     // TODO: file read './test/test-bitmap.bmp' and put the promise return into buffer variable
+    fs.readFile('./test/test-bitmap.bmp', (err, data) => {
+      if(err) throw err;
+      buffer = data;
+      done();
+    });  
   });
 
   it('has correct specs', () => {
@@ -22,6 +28,7 @@ describe('bitmap header', () => {
     // on the BitmapHeader in its constructor.
     // These test values are correct for the supplied test-bitmap.bmp
     const header = new BitmapHeader(buffer);
+    console.log(buffer);
     expect(header.pixelOffset).toEqual(54);
     expect(header.bitsPerPixel).toEqual(24);
     expect(header.fileSize).toEqual(30054);
