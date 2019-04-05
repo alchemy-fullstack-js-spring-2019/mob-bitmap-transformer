@@ -1,5 +1,6 @@
 const { invert } = require('../lib/invert-transformer');
 const { grayscale } = require('../lib/grayscale-transformer');
+const { paintitblack } = require('../lib/black-transformer');
 
 describe('transformers', () => {
 
@@ -31,6 +32,22 @@ describe('transformers', () => {
       r: 113,
       g: 113,
       b: 113
+    });
+  });
+
+  it('PAINTITBLACK', () => {
+    // HINT: grayscale assigns the average of all three colors
+    // as the new value for each color
+    const transformed = paintitblack({
+      r: 34,
+      g: 100,
+      b: 205
+    });
+
+    expect(transformed).toEqual({
+      r: 0,
+      g: 0,
+      b: 0
     });
   });
 
