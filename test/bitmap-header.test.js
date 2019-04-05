@@ -20,9 +20,6 @@ describe('bitmap header', () => {
   });
 
   it('parses header data', () => {
-    // TODO: use the constants to populate the following properties
-    // on the BitmapHeader in its constructor.
-    // These test values are correct for the supplied test-bitmap.bmp
     const header = new BitmapHeader(buffer);
     expect(header.pixelOffset).toEqual(54);
     expect(header.bitsPerPixel).toEqual(24);
