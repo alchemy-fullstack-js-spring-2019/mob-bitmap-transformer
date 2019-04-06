@@ -23,9 +23,9 @@ describe('Pixel Reader', () => {
       // write deepEqual assertion for colors versus the
       // expected rgb color objects
       // expect().toEqual()
-        // expect(colors).toEqual({});
+      // expect(colors).toEqual({});
 
-        
+
       // Don't forget to call done()!
       done();
     });
