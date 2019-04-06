@@ -1,5 +1,5 @@
 const invert = require('../lib/invert-transformer');
-// const grayscale = require('../lib/grayscale-transformer');
+const grayscale = require('../lib/grayscale-luminosity-transformer');
 
 describe('transformers', () => {
 
@@ -28,9 +28,9 @@ describe('transformers', () => {
     });
 
     expect(transformed).toEqual({
-      r: 113,
-      g: 113,
-      b: 113
+      r: 7.14,
+      g: 72,
+      b: 14.350000000000001
     });
   });
 
