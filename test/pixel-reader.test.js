@@ -5,7 +5,11 @@ describe('Pixel Reader', () => {
     it('reads pixel from buffer', done => {
         const reader = new PixelReader({ bitsPerPixel: 24 });
 
+        const sampleBuffer =  
         const colors = [];
+        reader.on('pixelRead', object => {
+            colors.push(object);
+        });
 
         // TODO: subscribe to reader "color" event and push into `colors` array.
         // A "color" object should look like:
@@ -17,6 +21,7 @@ describe('Pixel Reader', () => {
         // }
 
         reader.on('end', () => {
+
             // write deepEqual assertion for colors versus the
             // expect().toEqual()
             // expected rgb color objects
