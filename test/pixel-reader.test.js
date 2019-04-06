@@ -31,6 +31,7 @@ describe('Pixel Reader', () => {
 
     // Call read method with your buffer
     reader.read(buffer);
+    done();
   });
 
 });
