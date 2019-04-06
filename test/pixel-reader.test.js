@@ -7,7 +7,13 @@ describe('Pixel Reader', () => {
 
         const colors = [];
 
+
+        //we need to write pixels, pass them into the PixelReader, then we can use the read method to read things
+
         // TODO: subscribe to reader "color" event and push into `colors` array.
+        reader.on('color', color => {
+            colors.push(color);
+        });
         // A "color" object should look like:
         // {
         //     offset: <offset from the start of buffer passed to PixelReader>,
@@ -16,12 +22,14 @@ describe('Pixel Reader', () => {
         //     b: <blue color value>,
         // }
 
-        reader.on('end', () => {
-            // write deepEqual assertion for colors versus the
+        reader.once('end', () => {
+            // write 
             // expect().toEqual()
             // expected rgb color objects
+            expect(colors).toEqual(buffer?)
 
             // Don't forget to call done()!
+            done();
         });
 
         // Create a buffer with known data for your colors
