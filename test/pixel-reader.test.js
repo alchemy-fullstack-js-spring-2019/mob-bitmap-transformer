@@ -1,10 +1,18 @@
 const PixelReader = require('../lib/pixel-reader');
+const fs = require('fs');
 
 describe('Pixel Reader', () => {
-
+  
   it('reads pixel from buffer', done => {
     const reader = new PixelReader({ bitsPerPixel: 24 });
-
+    fs.readFile('./test/test-bitmap.bmp', (err, data) => {
+      if(err) throw err;
+      let buffer = data;
+      done();
+    });
+    reader.on('color', (buffedColors) => {
+      colors.push(buffedColors);
+    });    
     const colors = [];
 
     // TODO: subscribe to reader "color" event and push into `colors` array.

@@ -1,6 +1,6 @@
 const { invert } = require('../lib/invert-transformer');
 const { grayscale } = require('../lib/grayscale-transformer');
-const { paintitblack } = require('../lib/black-transformer');
+const { paintitblack } = require('../lib/death-transformer');
 
 describe('transformers', () => {
 
