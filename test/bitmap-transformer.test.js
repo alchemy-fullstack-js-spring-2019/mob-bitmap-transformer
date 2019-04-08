@@ -1,6 +1,6 @@
 const { readFileSync } = require('fs');
-const BitmapTransformer = require('../lib/bitmap-transformer');
-const invert = require('../lib/invert-transform');
+const BitmapTransform = require('../lib/bitmap-transformer');
+const invert = require('../lib/invert-transformer');
 
 describe('bitmap file transformer', () => {
 
@@ -13,12 +13,12 @@ describe('bitmap file transformer', () => {
   it('test whole transform', done => {
     // Use the BitmapTransformer class,
     // passing in the buffer from the file read
-    const bitmap = new BitmapTransformer(buffer);
+    const bitmap = new BitmapTransform(buffer);
 
     // Call .transform(), which will modify the buffer.
     // With this api, you pass in a transformation function (we are testing with "invert")
     bitmap.transform(invert, err => {
-      if (err) return done(err);
+      if(err) return done(err);
 
       // After above step, the buffer has been modified
       // and is accessible via bitmap.buffer.
