@@ -40,7 +40,6 @@ describe('Pixel Reader', () => {
             }
         ];
 
-        reader.read(buffer);
         
         //<Buffer 42 86 f4 f4 42 c5 eb f4 41>
 
@@ -61,13 +60,16 @@ describe('Pixel Reader', () => {
         reader.on('end', () => {
             expect(colors).toEqual(expectedArray);
 
-        //     // write deepEqual assertion for colors versus the
-        //     // expect().toEqual()
-        //     // expected rgb color objects
+            //     // write deepEqual assertion for colors versus the
+            //     // expect().toEqual()
+            //     // expected rgb color objects
 
-        //     // Don't forget to call done()!
+            //     // Don't forget to call done()!
+       
             done();
         });
+
+        reader.read(buffer);
     
         // // Call read method with your buffer
     });
