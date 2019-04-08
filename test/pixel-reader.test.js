@@ -13,17 +13,35 @@ const pixelMockHandler = jest.fn();
 
 describe('Pixel Reader', () => {
 
-    it('reads pixel from buffer', done => {
-        console.log('createdBuffer', buff);
+    it('reads correct number of pixels from buffer', done => {
         const reader = new PixelReader({ bitsPerPixel: 24 });
-
         reader.on('color', pixelMockHandler);
         reader.once('end', () => {
             expect(pixelMockHandler).toBeCalledTimes(3);
             done();
         });
         reader.read(buff);
+    });
 
+    it('matches rgb values in buffer and read', done => {
+        const reader = new PixelReader({ bitsPerPixel: 24 });
+        const colors = [];
+        reader.on('color', (color) => colors.push(color));
+        reader.once('end', () => {
+            const bufferColors = [];
+            for(let i = 0; i + 3 <= buff.length; i += 3) {
+                const bgrInHex = {
+                    offset: i,
+                    b: buff.readUInt8(i),
+                    g: buff.readUInt8(i + 1),
+                    r: buff.readUInt8(i + 2)
+                };
+                bufferColors.push(bgrInHex);
+            }
+            expect(colors).toEqual(bufferColors);
+            done();
+        });
+        reader.read(buff);
     });
 
 });

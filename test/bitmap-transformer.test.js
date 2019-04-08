@@ -5,22 +5,22 @@ const invert = require('../lib/invert-transform');
 describe('bitmap file transformer', () => {
 
     let buffer = null;
-    beforeEach(() => {
-
-        // TODO: file read sync './test/test-bitmap.bmp' into buffer variable
+    beforeEach((done) => {
+        fs.readFile('./test/test-bitmap.bmp', (err, data) => {
+            buffer = data;
+            done();
     });
 
     // "pinning" test, or "snapshot" test
     it('test whole transform', done => {
-        // Use the BitmapTransformer class,
-        // passing in the buffer from the file read
+
         const bitmap = new BitmapTransformer(buffer);
 
         // Call .transform(), which will modify the buffer.
         // With this api, you pass in a transformation function (we are testing with "invert")
         bitmap.transform(invert, err => {
             if (err) return done(err);
-
+            
             // After above step, the buffer has been modified
             // and is accessible via bitmap.buffer.
 
