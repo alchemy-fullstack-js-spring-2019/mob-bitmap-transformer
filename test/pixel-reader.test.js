@@ -24,7 +24,33 @@ describe('Pixel Reader', () => {
       // expected rgb color objects
       // expect().toEqual()
       // expect(colors).toEqual({});
+      expect(colors).toEqual([
+        {
+          'colors': {
+            'b': 0,
+            'g': 25,
+            'r': 50,
+          },
+          'offset': 0,
+        },
+        {
+          'colors': {
+            'b': 75,
+            'g': 100,
+            'r': 125,
+          },
+          'offset': 3,
+        },
+        {
+          'colors': {
+            'b': 150,
+            'g': 175,
+            'r': 200,
+          },
+          'offset': 6,
+        },
 
+      ]);
 
       // Don't forget to call done()!
       done();
@@ -34,7 +60,9 @@ describe('Pixel Reader', () => {
     const buffer = Buffer.alloc(3 * 3); // for three pixels
     // TODO: fill buffer with byte values that match your
     // expected test colors
-
+    for(let i = 0; i < buffer.length; i++) {
+      buffer.writeUInt8((25 * i), i);
+    }
     // Call read method with your buffer
     reader.read(buffer);
   });
