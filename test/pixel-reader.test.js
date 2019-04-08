@@ -24,19 +24,22 @@ describe('Pixel Reader', () => {
         
         const expectedArray = [
             {
-                b: 244,
+                offset: 0,
                 r: 66,
-                g: 134
+                g: 134,
+                b: 244
             },
             {
-                b: 67,
+                offset: 3,
                 r: 244,
-                g: 196
+                g: 66,
+                b: 197
             },
             {
-                b: 65,
+                offset: 6,
                 r: 235,
-                g: 244
+                g: 244,
+                b: 65
             }
         ];
 
