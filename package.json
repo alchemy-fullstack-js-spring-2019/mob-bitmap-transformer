@@ -1,0 +1,29 @@
+{
+  "name": "mob-bitmap-transformer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alchemy-fullstack-js-spring-2019/mob-bitmap-transformer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alchemy-fullstack-js-spring-2019/mob-bitmap-transformer/issues"
+  },
+  "homepage": "https://github.com/alchemy-fullstack-js-spring-2019/mob-bitmap-transformer#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.7.1"
+  }
+}
