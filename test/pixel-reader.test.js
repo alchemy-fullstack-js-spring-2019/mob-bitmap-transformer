@@ -10,9 +10,9 @@ describe('Pixel Reader', () => {
     });
 
     reader.on('end', () => {
-      expect(colors[0]).toEqual({ r: 255, g: 0, b: 0 });
-      expect(colors[1]).toEqual({ r: 0, g: 255, b: 0 });
-      expect(colors[2]).toEqual({ r: 0, g: 0, b: 255 });
+      expect(colors[0]).toEqual({ b: 255, g: 0, r: 0, offset: 0 });
+      expect(colors[1]).toEqual({ b: 0, g: 255, r: 0, offset: 3 });
+      expect(colors[2]).toEqual({ b: 0, g: 0, r: 255, offset: 6 });
       done();
     });
 
