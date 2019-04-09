@@ -21,20 +21,24 @@ describe('Pixel Reader', () => {
         },
         offset: 0
       });
-      // expect(colors[1]).toEqual({
-      //   colors: {
-      //     r: 0,
-      //     g: 255,
-      //     b: 0, 
-      //   },
-      //   offset: 3
-      // });
-      // expect(colors[2]).toEqual({
-      //   r: 0,
-      //   g: 0,
-      //   b: 255,
-      //   offset: 6
-      // });
+      expect(colors[1]).toEqual({
+        colors: {
+          r: 0,
+          g: 255,
+          b: 0,
+          offset: 3
+        },
+        offset: 3
+      });
+      expect(colors[2]).toEqual({
+        colors: {
+          r: 0,
+          g: 0,
+          b: 255,
+          offset: 6
+        },
+        offset: 6
+      });
       done();
     });
 
@@ -42,12 +46,12 @@ describe('Pixel Reader', () => {
     buffer.writeUInt8(0x00, 0);
     buffer.writeUInt8(0x00, 1);
     buffer.writeUInt8(0xFF, 2);
-    buffer.writeUInt8(0xFF, 3);
-    buffer.writeUInt8(0x00, 4);
-    buffer.writeUInt8(0xFF, 5);
-    buffer.writeUInt8(0x00, 6);
+    buffer.writeUInt8(0x00, 3);
+    buffer.writeUInt8(0xFF, 4);
+    buffer.writeUInt8(0x00, 5);
+    buffer.writeUInt8(0xFF, 6);
     buffer.writeUInt8(0x00, 7);
-    buffer.writeUInt8(0xFF, 8);
+    buffer.writeUInt8(0x00, 8);
 
     reader.read(buffer);
   });
