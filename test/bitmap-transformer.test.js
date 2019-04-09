@@ -3,7 +3,7 @@ const { readFileSync } = require('fs');
 const { BitmapTransform } = require('../lib/bitmap-transformer');
 const { invert } = require('../lib/invert-transformer.js');
 
-describe.skip('bitmap file transformer', () => {
+describe('bitmap file transformer', () => {
 
   let buffer = null;
   beforeEach(() => {
