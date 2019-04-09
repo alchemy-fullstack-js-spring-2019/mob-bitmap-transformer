@@ -3,7 +3,7 @@ const { readFileSync } = require('fs');
 const { BitmapTransform } = require('../lib/bitmap-transformer');
 const { invert } = require('../lib/invert-transformer.js');
 
-describe.skip('bitmap file transformer', () => {
+describe('bitmap file transformer', () => {
 
   let buffer = null;
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe.skip('bitmap file transformer', () => {
 
     bitmap.transform(invert, err => {
       if(err) return done(err);
-      const expected = readFileSync('./test/inverted-expected.bmp');
+      const expected = fs.readFileSync('./test/inverted-expected.bmp');
       expect(bitmap.buffer).toEqual(expected);
       done();
     });
