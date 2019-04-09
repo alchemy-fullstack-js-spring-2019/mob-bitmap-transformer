@@ -3,7 +3,7 @@ Bitmap Transformer
 
 ## Description
 
-For this assignment you will be **working in pairs** to build a bitmap transformer class.
+For this assignment you will be **working in a mob** to build a bitmap transformer class.
 
 Normal "standard" dev setup for node library project (linting, build scripts, travis, package.json, gitignore, etc.)
 
