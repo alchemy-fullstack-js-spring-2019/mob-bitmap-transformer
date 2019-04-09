@@ -1,5 +1,5 @@
 {
-  "name": "mob-simple-database",
+  "name": "mob-bitmap-transformer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,7 +25,6 @@
   "homepage": "https://github.com/parkerchristian/mob-simple-database#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "jest": "^24.7.1",
-    "shortid": "^2.2.14"
+    "jest": "^24.7.1"
   }
 }
