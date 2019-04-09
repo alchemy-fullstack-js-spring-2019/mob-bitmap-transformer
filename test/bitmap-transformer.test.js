@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { readFileSync } = require('fs');
 const { BitmapTransform } = require('../lib/bitmap-transformer');
 const { invert } = require('../lib/invert-transformer.js');
 
