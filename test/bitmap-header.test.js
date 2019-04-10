@@ -10,7 +10,6 @@ describe('bitmap header', () => {
         fs.readFile('./test/test-bitmap.bmp', (err, data) => {
             if(err) throw err;
             buffer = data;
-            console.log(buffer);
         });
 
     });
