@@ -1,36 +1,47 @@
 const PixelReader = require('../lib/pixel-reader');
+const buff = Buffer.alloc(9);
+buff.writeUInt8(0xFA, 0);
+buff.writeUInt8(0x50, 1);
+buff.writeUInt8(0x8B, 2);
+buff.writeUInt8(0xFF, 3);
+buff.writeUInt8(0xB8, 4);
+buff.writeUInt8(0xEE, 5);
+buff.writeUInt8(0x4C, 6);
+buff.writeUInt8(0x32, 7);
+buff.writeUInt8(0xDD, 8);
+const pixelMockHandler = jest.fn();
 
 describe('Pixel Reader', () => {
 
-    it('reads pixel from buffer', done => {
+    it('reads correct number of pixels from buffer', done => {
         const reader = new PixelReader({ bitsPerPixel: 24 });
-
-        const colors = [];
-
-        // TODO: subscribe to reader "color" event and push into `colors` array.
-        // A "color" object should look like:
-        // {
-        //     offset: <offset from the start of buffer passed to PixelReader>,
-        //     r: <red color value>,
-        //     g: <green color value>,
-        //     b: <blue color value>,
-        // }
-
-        reader.on('end', () => {
-            // write deepEqual assertion for colors versus the
-            // expect().toEqual()
-            // expected rgb color objects
-
-            // Don't forget to call done()!
+        reader.on('color', pixelMockHandler);
+        reader.once('end', () => {
+            expect(pixelMockHandler).toBeCalledTimes(3);
+            done();
         });
+        reader.read(buff);
+    });
 
-        // Create a buffer with known data for your colors
-        const buffer = Buffer.alloc(24 * 3); // for three pixels
-        // TODO: fill buffer with byte values that match your
-        // expected test colors
-
-        // Call read method with your buffer
-        reader.read(buffer);
+    it('matches rgb values in buffer and read', done => {
+        const reader = new PixelReader({ bitsPerPixel: 24 });
+        const colors = [];
+        reader.on('color', (color) => colors.push(color));
+        reader.once('end', () => {
+            const bufferColors = [];
+            for(let i = 0; i + 3 <= buff.length; i += 3) {
+                const bgrInHex = {
+                    offset: i,
+                    b: buff.readUInt8(i),
+                    g: buff.readUInt8(i + 1),
+                    r: buff.readUInt8(i + 2)
+                };
+                bufferColors.push(bgrInHex);
+            }
+            expect(colors).toEqual(bufferColors);
+            done();
+        });
+        reader.read(buff);
     });
 
 });
